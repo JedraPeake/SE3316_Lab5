@@ -9,6 +9,18 @@ import { ImageService } from '../shared/image.service'
 export class ImageListComponent implements OnInit {
   
   images: any[];
+  imagesFound: boolean = false;
+
+  handleSuccess(data){
+    this.imagesFound = true;
+    this.images = data.collection.items;
+    console.log(data.collection.items);
+    console.log(data.collection.items[0].data[0]["description"]);
+  }
+  
+  handleError(error){
+    console.log(error);
+  }
 
   constructor(private _imageService : ImageService ) {
   
@@ -16,8 +28,9 @@ export class ImageListComponent implements OnInit {
   
   searchImages( query : string ){
     return this._imageService.getImage(query).subscribe(
-      data => console.log(data),
-      error => console.log(error),
+      data => this.handleSuccess(data),
+      //data => console.log(data.collection),
+      error => this.handleError(error),
       () => console.log("req complete")
     )
   }
