@@ -2,7 +2,7 @@
 <button (click)="searchImages(searchQuery)" type="button" >Find Images</button>
 
 <div *ngFor="let image of images" class="image-container" >
-    <p> Description: {{ image.data }} </p>
+    <p> Description: {{ image.data[0]["description"] }} </p>
     
     
     
