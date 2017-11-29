@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { ImageListComponent } from './image-list/image-list.component';
 
 import { ImageService } from './shared/image.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImageListComponent
+    ImageListComponent,
+    NavbarComponent,
+    HomeComponent,
+    DashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
