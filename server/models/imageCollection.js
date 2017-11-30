@@ -29,15 +29,19 @@ const ImageCollectionSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
     required: true
+  },
+  rating: {
+    type  : Number,
+  },
+  ratingNumberList: {
+    type : Array ,
+    "default" : []    
+  },
+  listUrlList: {
+    type : Array ,
+    "default" : [],   
+    required: true
   }
-  rating{
-    type  : Number,  
-  }
-  ratingNumberList{
-      
-  }
-  listUrlList{
-      
-  }
-  
 });
+
+const ImageCollection = module.exports = mongoose.model('ImageCollection', ImageCollectionSchema);
