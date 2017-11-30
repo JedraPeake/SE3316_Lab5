@@ -12,6 +12,7 @@ router.post('/register', jsonParser, (req, res, next) => {
  console.log(req.body);
  console.log(req.body.username);
  console.log(req.body.password);
+ 
  var user = req.body;
  console.log('request body : ' + JSON.stringify(user));
  let newUser = new User({
@@ -38,7 +39,7 @@ router.post('/authenticate', jsonParser, (req, res, next) => {
   User.getUserByUsername(username, (err, user) => {
     if(err) throw err;
     if(!user){
-      return res.json({success: false, msg: 'User not found'});
+      return res.json({success: false, msg: 'Email is not linked to an existing account'});
     }
 
     User.comparePassword(password, user.password, (err, isMatch) => {

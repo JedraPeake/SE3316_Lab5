@@ -35,8 +35,8 @@ var port = process.env.PORT || 8080;
 index.use(cors());
 
 // Set Static Folder
-index.use(express.static(path.join(__dirname, 'public')));
-//index.use(express.static(path.join(__dirname, '/../nasa-webApp/dist')));
+//index.use(express.static(path.join(__dirname, 'public')));
+index.use(express.static(path.join(__dirname, '/../nasa-webApp/dist')));
 
 index.use('/users', users);
 

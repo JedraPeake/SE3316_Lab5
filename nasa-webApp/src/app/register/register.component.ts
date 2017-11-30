@@ -29,8 +29,16 @@ export class RegisterComponent implements OnInit {
       password: this.password
     }
     
-    if(!this.validateService.validateRegister(user)){
-      this.flashMessage.show("please fill in all fields", {cssClass: 'alert-danger', timeout: 3000});
+    //if(!this.validateService.validateRegister(user)){
+      //this.flashMessage.show("please fill in all fields", {cssClass: 'alert-danger', timeout: 3000});
+      //return false;
+    //}
+    if(!this.validateService.validateEmailContent(user)){
+      this.flashMessage.show("please fill in email field", {cssClass: 'alert-danger', timeout: 3000});
+      return false;
+    }
+    if(!this.validateService.validatePasswordContent(user)){
+      this.flashMessage.show("please fill in password field", {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
     if(!this.validateService.validateEmail(user.username)){
