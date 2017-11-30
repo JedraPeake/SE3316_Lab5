@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import { AuthService } from './services/auth.service';
 const webAppRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
@@ -40,7 +41,7 @@ const webAppRoutes: Routes =  [
     RouterModule.forRoot(webAppRoutes), 
     FlashMessagesModule.forRoot()
   ],
-  providers: [ImageService, ValidateService ],
+  providers: [ImageService, ValidateService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
