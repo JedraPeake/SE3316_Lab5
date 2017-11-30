@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => {
 const index = express();
 
 const users = require('./routes/users');
+const imageCollections = require('./routes/imageCollections');
 
 index.get('/', (req, res) => {
   res.send('Invalid Endpoint');
@@ -39,6 +40,7 @@ index.use(cors());
 index.use(express.static(path.join(__dirname, '/../nasa-webApp/dist')));
 
 index.use('/users', users);
+index.use('/imageCollections', imageCollections);
 
 //index.use(bodyParser.urlencoded({ extended: true }));
 index.use(bodyParser.json);

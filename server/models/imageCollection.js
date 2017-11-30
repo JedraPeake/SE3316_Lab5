@@ -39,9 +39,16 @@ const ImageCollectionSchema = mongoose.Schema({
   },
   listUrlList: {
     type : Array ,
-    "default" : [],   
-    required: true
+    "default" : []
   }
 });
 
 const ImageCollection = module.exports = mongoose.model('ImageCollection', ImageCollectionSchema);
+
+module.exports.getImageCollectionById = function(id, callback){
+  ImageCollection.findById(id, callback);
+}
+
+module.exports.addImageCollection = function(newImageCollection, callback){
+  newImageCollection.save(callback);
+}
