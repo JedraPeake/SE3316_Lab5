@@ -34,5 +34,13 @@ export class ValidateService {
     return re.test(email);
   }
   
+  validateCollection(imageCollection){
+    if( imageCollection.name == undefined || imageCollection.description == undefined || imageCollection.visibility == undefined ){
+          return false;
+      }else{
+          return true;
+      }
+  }
+
   
 }

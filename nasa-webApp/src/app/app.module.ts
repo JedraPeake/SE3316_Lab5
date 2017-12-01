@@ -13,16 +13,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {FlashMessagesModule} from 'angular2-flash-messages';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { CreateCollectionComponent } from './create-collection/create-collection.component';
 
 const webAppRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'createCollection', component: CreateCollectionComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -34,7 +36,8 @@ const webAppRoutes: Routes =  [
     DashboardComponent,
     ProfileComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateCollectionComponent
   ],
   imports: [
     BrowserModule,

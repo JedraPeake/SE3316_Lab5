@@ -40,5 +40,16 @@ router.get('/getCollection', jsonParser, (req, res, next) => {
     //res.send('GET COLLECTION');
 });
 
+//Get all collection 
+router.get('/getAllCollections', jsonParser, (req, res, next) => {
+    ImageCollection.find( (err, imageCollection) => {
+    if(err){
+      res.json({success: false, msg:'Failed to find collection'});
+    } else {
+      res.json({success: true, imageCollection, msg:'Collections returned'});
+    }
+  });
+});
+
 module.exports = router;
 

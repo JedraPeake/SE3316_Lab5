@@ -25,6 +25,7 @@ const index = express();
 
 const users = require('./routes/users');
 const imageCollections = require('./routes/imageCollections');
+const dmcas = require('./routes/dmcas');
 
 index.get('/', (req, res) => {
   res.send('Invalid Endpoint');
@@ -41,6 +42,7 @@ index.use(express.static(path.join(__dirname, '/../nasa-webApp/dist')));
 
 index.use('/users', users);
 index.use('/imageCollections', imageCollections);
+index.use('/dmcas', dmcas);
 
 //index.use(bodyParser.urlencoded({ extended: true }));
 index.use(bodyParser.json);

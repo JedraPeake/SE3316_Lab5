@@ -49,10 +49,22 @@ export class AuthService {
      return tokenNotExpired('id_token');
   }
   
+  getUsername(){
+     return localStorage.getItem('user');//this.user;
+  }
+  
   logout(){
     this.authToken = null;
     this.user = null;
     localStorage.clear();
   }
+  
+  createImagecollection(imageCollection){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/imageCollections/createCollection', imageCollection,{headers: headers})
+      .map(res => res.json());
+  }
+  
 
 }
