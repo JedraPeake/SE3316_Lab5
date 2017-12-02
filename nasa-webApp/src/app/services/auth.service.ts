@@ -66,5 +66,10 @@ export class AuthService {
       .map(res => res.json());
   }
   
+  getCollections(currUser){
+    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/imageCollections/getUserCollections', {params:{"username":currUser}})
+      .map(res => res.json());
+  }
+  
 
 }

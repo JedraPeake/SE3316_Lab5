@@ -17,7 +17,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateCollectionComponent } from './create-collection/create-collection.component';
-
+import { MyImageCollectionsComponent } from './my-image-collections/my-image-collections.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 const webAppRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
@@ -37,14 +38,15 @@ const webAppRoutes: Routes =  [
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    CreateCollectionComponent
+    CreateCollectionComponent,
+    MyImageCollectionsComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     RouterModule.forRoot(webAppRoutes), 
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(), NgxPaginationModule
   ],
   providers: [ImageService, ValidateService, AuthService, AuthGuard ],
   bootstrap: [AppComponent]

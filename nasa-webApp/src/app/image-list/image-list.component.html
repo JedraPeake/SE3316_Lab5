@@ -1,8 +1,10 @@
 <input class="search" [(ngModel)]="searchQuery" placeholder="Search for images">
 <button (click)="searchImages(searchQuery)" type="button" >Find Images</button>
 
-<div *ngFor="let image of images" class="image-container" >
-    <img [src]= "image.links[0]['href']" />
-    <p> Description: {{ image.data[0]["description"] }} </p>
+<div *ngFor="let image of images | paginate: { itemsPerPage: 10, currentPage: p }; let i=index " class="image-container" >
     
+    <br/>
+    <img [src]= "image.links[0]['href']" width=30% height= 30% />
+    <!--<p> Description: {{ image.data[0]["description"] }} </p>-->
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

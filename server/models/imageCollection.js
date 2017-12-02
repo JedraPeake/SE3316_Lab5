@@ -9,7 +9,7 @@ const ImageCollectionSchema = mongoose.Schema({
   },
   isPrivate: {
     type: Boolean,
-    default: true,
+    //default: true,
     required: true
   },
   description: {

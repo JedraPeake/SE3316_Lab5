@@ -35,7 +35,7 @@ export class ValidateService {
   }
   
   validateCollection(imageCollection){
-    if( imageCollection.name == undefined || imageCollection.description == undefined || imageCollection.visibility == undefined ){
+    if( imageCollection.name == undefined || imageCollection.description == undefined ){
           return false;
       }else{
           return true;

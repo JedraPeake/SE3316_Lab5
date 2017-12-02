@@ -35,11 +35,16 @@ export class CreateCollectionComponent implements OnInit {
     var ss = currUser.split(":"); 
     var resultUser = ss[2].slice(1, -2);
     //console.log("cu " + resultUser);
-    var visBool = true;
+    
+    if (this.vis == "true"){
+      var isPrivate = true;
+    }else{
+      var isPrivate = false;
+    }
     const imageCollection = {
       name: this.name,
       description: this.description,
-      visibility: this.vis,
+      isPrivate: isPrivate,
       createdBy: resultUser
     }
     

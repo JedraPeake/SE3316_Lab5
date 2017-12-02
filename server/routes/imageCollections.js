@@ -40,6 +40,18 @@ router.get('/getCollection', jsonParser, (req, res, next) => {
     //res.send('GET COLLECTION');
 });
 
+//Get all user image collections 
+router.get('/getUserCollections', jsonParser, (req, res, next) => {
+    console.log(req.query.username);
+    ImageCollection.find( ({createdBy:req.query.username}), (err, collections)=> {
+    if(err){
+      res.json({success: false, msg:'Failed to find collection'});
+    } else {
+      res.json({success: true, collections, msg:'Collections returned'});
+    }
+  })
+});
+
 //Get all collection 
 router.get('/getAllCollections', jsonParser, (req, res, next) => {
     ImageCollection.find( (err, imageCollection) => {
