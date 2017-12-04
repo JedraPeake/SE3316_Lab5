@@ -1,40 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const ImageCollection = require('../models/imageCollection');
+const Dmca = require('../models/dmca');
 const config = require('../config/database');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 var jsonParser = bodyParser.json();
 
-router.get('/getDmca', function (req, res, next) {
-    res.send('getting dcma');
-    /*Dmca.find({}, function (err, dmcas) {
-
-        if (err) {
-            res.send(err);
-        }
-        res.json(dmcas);
-    });*/
+router.get('/getDmca', jsonParser, function (req, res, next) {
+    Dmca.find({}, {}, { sort: { 'dateMade' : -1 } }, function(err, post) {
+         res.json(post);
+    });
 
 });
 
 
-router.post('/updateDmca', function (req, res, next) {
-    res.send('posting dcma');
+router.post('/updateDmca', jsonParser, function (req, res, next) {
+    //res.send('posting dcma');
 
-    /*var dmca = new Dmca();
-       dmca.title = req.body.title,
-       dmca.body = req.body.body
-
-    dmca.save(function (err) {
+    let newPP = new Dmca({
+        title: "New dmca policy",
+        body: req.body.body
+    });
+       //pp.title = "New privacy policy",
+       //pp.body = req.body.body
+    console.log("get called");
+    newPP.save(function (err) {
         if (err) {
-
-            res.send(err);
+            console.log("get called err");
+            res.json({success: true, err, msg:'get works'});
+        }else{
+            console.log("get called pass ");
+            res.json({success: true, msg:'get works'});
         }
-
-        res.json(201, dmca);
-    });*/
+    });
 
 });
 

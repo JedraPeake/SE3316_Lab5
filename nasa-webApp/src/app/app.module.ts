@@ -19,13 +19,19 @@ import { AuthGuard } from './guards/auth.guard';
 import { CreateCollectionComponent } from './create-collection/create-collection.component';
 import { MyImageCollectionsComponent } from './my-image-collections/my-image-collections.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { EditPrivacyPolicyComponent } from './edit-privacy-policy/edit-privacy-policy.component';
+import { DmcaComponent } from './dmca/dmca.component';
+import { EditDmcaComponent } from './edit-dmca/edit-dmca.component';
 const webAppRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'createCollection', component: CreateCollectionComponent, canActivate:[AuthGuard]}
+  {path:'createCollection', component: CreateCollectionComponent, canActivate:[AuthGuard]},
+  {path:'dmca', component: DmcaComponent},
+  {path:'privacy', component: PrivacyPolicyComponent}
 ]
 
 @NgModule({
@@ -39,7 +45,11 @@ const webAppRoutes: Routes =  [
     LoginComponent,
     RegisterComponent,
     CreateCollectionComponent,
-    MyImageCollectionsComponent
+    MyImageCollectionsComponent,
+    PrivacyPolicyComponent,
+    EditPrivacyPolicyComponent,
+    DmcaComponent,
+    EditDmcaComponent
   ],
   imports: [
     BrowserModule,

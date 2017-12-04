@@ -13,10 +13,18 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  validEmail: {
+  confirmed: {
     type: Boolean,
     default: false,
     required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  storedEmailToken: {
+    type: String
   }
 });
 
@@ -30,7 +38,16 @@ module.exports.getUserByUsername = function(username, callback){
   const query = {username: username}
   User.findOne(query, callback);
 }
-
+module.exports.updateToken = function(username, token, callback){
+  console.log("user update token" + username + token)
+  
+  User.findOneAndUpdate({ "username" : username }, { $set : { "confirmed" : "true" } }, {new: true}, (err, user)=>{
+    if(err) console.log("err user " + err );
+    
+    console.log("user update " + user );
+  });
+  
+}
 module.exports.addUser = function(newUser, callback){
   bcrypt.genSalt(10, (err, salt) => {
     if(err) throw err;  
@@ -41,7 +58,14 @@ module.exports.addUser = function(newUser, callback){
     });
   });
 }
-
+module.exports.confirmedEmail = function(username, token, callback){
+  console.log("user" + username + token)
+  User.findOneAndUpdate({ "username" : username }, { $set : { "storedEmailToken" : token }}, {new: true}, (err, user)=>{
+    if(err) console.log("err user " + err );
+    
+    console.log("user " + user );
+  });
+}
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if(err) throw err;

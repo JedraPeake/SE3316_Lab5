@@ -8,6 +8,7 @@ export class AuthService {
   
   authToken: any;
   user: any;
+  privacyPolicy:any;
   constructor(private http:Http) { }
   
   registerUser(user){
@@ -16,14 +17,24 @@ export class AuthService {
     return this.http.post('https://lab5-jedrapeake.c9users.io:8080/users/register', user,{headers: headers})
       .map(res => res.json());
   }
-  
+  postdmca(dm){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/dmcas/updateDmca', dm, {headers: headers})
+      .map(res => res.json());
+  }
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post('https://lab5-jedrapeake.c9users.io:8080/users/authenticate', user,{headers: headers})
       .map(res => res.json());
   }
-  
+  getdmca(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/dmcas/getDmca', {headers: headers})
+      .map(res => res.json());
+  }
   getProfile(){
     let headers = new Headers();
     this.loadToken();
@@ -32,14 +43,26 @@ export class AuthService {
     return this.http.get('https://lab5-jedrapeake.c9users.io:8080/users/profile', {headers: headers})
       .map(res => res.json());
   }
-  
+  getPP(){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Content-Type','application/json');
+    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/privacypolicy/getPP', {headers: headers})
+      .map(res => res.json());
+  }
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
-  
+  updatePP(pp){
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Content-Type','application/json');
+    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/privacypolicy/updatePP', pp, {headers: headers})
+      .map(res => res.json());
+  }
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;

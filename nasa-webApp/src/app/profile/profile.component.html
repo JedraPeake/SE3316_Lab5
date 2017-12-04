@@ -2,5 +2,9 @@
   <h2 class="page-header">{{user.username}}</h2>
   <ul class="list-group">
     <li class="list-group-item">Username: {{user.username}}</li>
+    
+    <div *ngIf="isAd">
+      <app-edit-privacy-policy></app-edit-privacy-policy><app-edit-dmca></app-edit-dmca>
+    </div>
   </ul>
 </div>
