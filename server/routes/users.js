@@ -45,16 +45,9 @@ router.post('/register', jsonParser, (req, res, next) => {
             expiresIn: '1d',
           },
           (err, emailToken) => {
-            /*var req = request({
-              url: 'https://lab5-jedrapeake.c9users.io:8080/confirmation',
-              method: "POST",
-              json: {
-              	"storedEmailToken":emailToken,
-              	"username":newUser.username
-              }
-            },*/
-            //user = new User({ storedEmailToken: emailToken });
-            const url = `https://lab5-jedrapeake.c9users.io:8080/confirmation/?${emailToken}`;
+            
+            //fetch(url)
+            const url = `https://lab5-jedrapeake.c9users.io:8080/confirmation/?data=%7B%22name%3A%22${newUser.username}%22,%22storedEmailToken%3A%22${emailToken}%22%7D`;
             User.confirmedEmail(newUser.username, emailToken);
             console.log("user save "+ emailToken)
             transporter.sendMail({
@@ -130,9 +123,9 @@ router.post('/confirmation', jsonParser, (req, res, next) => {
   console.log(req);
   User.updateToken(req.body.username, req.body.storedEmailToken, (err, user)=>{
     if(err){
-      res.json({success: false, msg:'Failed to find user'});
+      res.send('err');//res.json({success: false, msg:'Failed to find user'});
     } else {
-      res.json({success: true, user, msg:'User update'});
+      res.send('suuc');//res.json({success: true, user, msg:'User update'});
     }
   });  
   res.json({success: true, msg:'User update'});//return res.send('https://lab5-jedrapeake.c9users.io:8081/login');
