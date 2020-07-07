@@ -47,7 +47,7 @@ router.post('/register', jsonParser, (req, res, next) => {
           (err, emailToken) => {
             
             //fetch(url)
-            const url = `https://lab5-jedrapeake.c9users.io:8080/confirmation/?data=%7B%22name%3A%22${newUser.username}%22,%22storedEmailToken%3A%22${emailToken}%22%7D`;
+            const url = `http://localhost:8080/confirmation/?data=%7B%22name%3A%22${newUser.username}%22,%22storedEmailToken%3A%22${emailToken}%22%7D`;
             User.confirmedEmail(newUser.username, emailToken);
             console.log("user save "+ emailToken)
             transporter.sendMail({
@@ -128,6 +128,6 @@ router.post('/confirmation', jsonParser, (req, res, next) => {
       res.send('suuc');//res.json({success: true, user, msg:'User update'});
     }
   });  
-  res.json({success: true, msg:'User update'});//return res.send('https://lab5-jedrapeake.c9users.io:8081/login');
+  res.json({success: true, msg:'User update'});//return res.send('https://localhost:8081/login');
 });
 module.exports = router;

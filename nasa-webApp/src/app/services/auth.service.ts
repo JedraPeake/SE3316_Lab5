@@ -1,98 +1,99 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {tokenNotExpired} from 'angular2-jwt';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-  
+
   authToken: any;
   user: any;
-  privacyPolicy:any;
-  constructor(private http:Http) { }
-  
-  registerUser(user){
+  privacyPolicy: any;
+  constructor(private http: Http) { }
+
+  registerUser(user) {
+    console.log("xx");
     let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/users/register', user,{headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8080/users/register', user, { headers: headers })
       .map(res => res.json());
   }
-  postdmca(dm){
+  postdmca(dm) {
     let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/dmcas/updateDmca', dm, {headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8080/dmcas/updateDmca', dm, { headers: headers })
       .map(res => res.json());
   }
-  authenticateUser(user){
+  authenticateUser(user) {
     let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/users/authenticate', user,{headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8080/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
-  getdmca(){
+  getdmca() {
     let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/dmcas/getDmca', {headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:8080/dmcas/getDmca', { headers: headers })
       .map(res => res.json());
   }
-  getProfile(){
+  getProfile() {
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    headers.append('Content-Type','application/json');
-    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/users/profile', {headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:8080/users/profile', { headers: headers })
       .map(res => res.json());
   }
-  getPP(){
+  getPP() {
     let headers = new Headers();
     this.loadToken();
-    headers.append('Content-Type','application/json');
-    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/privacypolicy/getPP', {headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:8080/privacypolicy/getPP', { headers: headers })
       .map(res => res.json());
   }
-  storeUserData(token, user){
+  storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
   }
-  updatePP(pp){
+  updatePP(pp) {
     let headers = new Headers();
     this.loadToken();
-    headers.append('Content-Type','application/json');
-    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/privacypolicy/updatePP', pp, {headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8080/privacypolicy/updatePP', pp, { headers: headers })
       .map(res => res.json());
   }
-  loadToken(){
+  loadToken() {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
   }
-  
-  loggedIn(){
-     return tokenNotExpired('id_token');
+
+  loggedIn() {
+    return tokenNotExpired('id_token');
   }
-  
-  getUsername(){
-     return localStorage.getItem('user');//this.user;
+
+  getUsername() {
+    return localStorage.getItem('user');//this.user;
   }
-  
-  logout(){
+
+  logout() {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
   }
-  
-  createImagecollection(imageCollection){
+
+  createImagecollection(imageCollection) {
     let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('https://lab5-jedrapeake.c9users.io:8080/imageCollections/createCollection', imageCollection,{headers: headers})
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8080/imageCollections/createCollection', imageCollection, { headers: headers })
       .map(res => res.json());
   }
-  
-  getCollections(currUser){
-    return this.http.get('https://lab5-jedrapeake.c9users.io:8080/imageCollections/getUserCollections', {params:{"username":currUser}})
+
+  getCollections(currUser) {
+    return this.http.get('http://localhost:8080/imageCollections/getUserCollections', { params: { "username": currUser } })
       .map(res => res.json());
   }
-  
+
 
 }
