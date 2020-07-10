@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     this.authService.getProfile().subscribe(profile => {
       console.log(profile.user);
       this.user = profile.user;
-
+      // fix this
       // this.isAd = this.user.isAdmin;
       console.log("isAdmin");
     },

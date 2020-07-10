@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service'
+import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
 })
 export class MyImageCollectionsComponent implements OnInit {
 
-  constructor(private authService:AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    
+
     //imageCollection:Object;
     var currUser = this.authService.getUsername();
-    var ss = currUser.split(":"); 
-    var ss = currUser.split(":"); 
+    var ss = currUser.split(":");
+    var ss = currUser.split(":");
     var resultUser = ss[2].slice(1, -2);
     console.log("tying");
     console.log("user " + resultUser);
@@ -24,10 +24,10 @@ export class MyImageCollectionsComponent implements OnInit {
       //this.imageCollection = 
       console.log("loading" + data.collections.collections);
     },
-    err => {
-      console.log(err);
-      return false;
-    });
+      err => {
+        console.log(err);
+        return false;
+      });
   }
 
 }

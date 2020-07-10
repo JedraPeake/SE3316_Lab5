@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from '../services/image.service'
+import { ImageService } from '../../services/image.service'
 import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-image-list',
@@ -7,14 +7,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./image-list.component.css']
 })
 export class ImageListComponent implements OnInit {
-  
+
   images: any[];
   imagesFound: boolean = false;
-  
-  handleSuccess(data){
-    
+
+  handleSuccess(data) {
+
     //console.log("empty test" + data.collection.items)
-    try{
+    try {
       console.log("defined " + data.collection.items)
       this.images = data.collection.items;
       console.log(data.collection.items);
@@ -24,28 +24,28 @@ export class ImageListComponent implements OnInit {
       //var index =0;
       //var outter = this.images.length/4;
       //for (var i = 0; i < this.images.length; i++) { 
-        //this.customImages[i] = data.collection.items[i];
+      //this.customImages[i] = data.collection.items[i];
       //}
       //console.log(this.customImages);
-      
+
     }
     catch (e) {
       console.log("undefined " + data.collection.items);
-      this.flashMessage.show("Search request did not return any images, please try again", {cssClass: 'alert-danger', timeout: 3000});
+      this.flashMessage.show("Search request did not return any images, please try again", { cssClass: 'alert-danger', timeout: 3000 });
     }
-    
-    
+
+
   }
-  
-  handleError(error){
+
+  handleError(error) {
     console.log(error);
   }
 
-  constructor(private _imageService : ImageService,  private flashMessage:FlashMessagesService) {
-  
+  constructor(private _imageService: ImageService, private flashMessage: FlashMessagesService) {
+
   }
-  
-  searchImages( query : string ){
+
+  searchImages(query: string) {
     return this._imageService.getImage(query).subscribe(
       data => this.handleSuccess(data),
       //data => console.log(data.collection),
@@ -56,5 +56,4 @@ export class ImageListComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
