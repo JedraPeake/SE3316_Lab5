@@ -12,32 +12,31 @@ export class AuthService {
   constructor(private http: Http) { }
 
   registerUser(user) {
-    console.log("xx");
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/users/register', user, { headers: headers })
       .map(res => res.json());
   }
   postdmca(dm) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/dmcas/updateDmca', dm, { headers: headers })
       .map(res => res.json());
   }
   authenticateUser(user) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
   getdmca() {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:8080/dmcas/getDmca', { headers: headers })
       .map(res => res.json());
   }
   getProfile() {
-    let headers = new Headers();
+    const headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
@@ -45,7 +44,7 @@ export class AuthService {
       .map(res => res.json());
   }
   getPP() {
-    let headers = new Headers();
+    const headers = new Headers();
     this.loadToken();
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:8080/privacypolicy/getPP', { headers: headers })
@@ -58,7 +57,7 @@ export class AuthService {
     this.user = user;
   }
   updatePP(pp) {
-    let headers = new Headers();
+    const headers = new Headers();
     this.loadToken();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/privacypolicy/updatePP', pp, { headers: headers })
@@ -74,7 +73,7 @@ export class AuthService {
   }
 
   getUsername() {
-    return localStorage.getItem('user');//this.user;
+    return localStorage.getItem('user'); // this.user;
   }
 
   logout() {
@@ -84,7 +83,7 @@ export class AuthService {
   }
 
   createImagecollection(imageCollection) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:8080/imageCollections/createCollection', imageCollection, { headers: headers })
       .map(res => res.json());
