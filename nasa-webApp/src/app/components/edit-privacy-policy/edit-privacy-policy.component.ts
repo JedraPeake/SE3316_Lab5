@@ -3,7 +3,11 @@ import { Router } from '@angular/router';
 
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-import { AdminService, AuthService } from '../../services';
+import {
+	AdminService,
+	AuthService,
+	GeneralWebsiteItemsService
+} from '../../services';
 
 @Component({
 	selector: 'app-edit-privacy-policy',
@@ -14,6 +18,7 @@ import { AdminService, AuthService } from '../../services';
 export class EditPrivacyPolicyComponent implements OnInit {
 	descPP: String; description: String;
 	constructor(
+		private generalWebsiteItemsService: GeneralWebsiteItemsService,
 		private adminService: AdminService,
 		private authService: AuthService,
 		private router: Router,
@@ -21,7 +26,7 @@ export class EditPrivacyPolicyComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.authService.getPP().subscribe(profile => {
+		this.generalWebsiteItemsService.getPrivacyPolicy().subscribe(profile => {
 			this.descPP = profile.pp[0]['body'];
 		},
 			err => {

@@ -4,10 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false,
-  
-  NASA_API_KEY: 'ZoaThVJGK3hSE0NO8pXlPAohOBBZOs6cpanUJvUN',
-  //NASA_API_URL: 'https://api.nasa.gov/planetary/apod?api_key='
-  NASA_API_URL: 'https://images-api.nasa.gov/search'
-  
+	production: false,
+
+	// old key just put in a removal request with NASA
+	// will be in the backend for security moving forward
+	NASA_API_KEY: 'ZoaThVJGK3hSE0NO8pXlPAohOBBZOs6cpanUJvUN',
+	// NASA_API_URL: 'https://api.nasa.gov/planetary/apod?api_key='
+	NASA_API_URL: 'https://images-api.nasa.gov/search',
+
+	BACKEND_API_BASE: 'http://localhost:8080'
 };

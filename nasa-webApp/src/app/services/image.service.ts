@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Http, Headers } from '@angular/http';
+
 import 'rxjs/add/operator/map';
+
+import { environment } from '../../environments/environment';
+
+// this needs to happen on the backend for security,
+// cause it's like impossible to hide keys in the front end
 
 @Injectable()
 export class ImageService {

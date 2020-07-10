@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service'
-import { Router } from '@angular/router';
+
+import { UserService } from '../../services';
 
 @Component({
-  selector: 'app-my-image-collections',
-  templateUrl: './my-image-collections.component.html',
-  styleUrls: ['./my-image-collections.component.css']
+	selector: 'app-my-image-collections',
+	templateUrl: './my-image-collections.component.html',
+	styleUrls: ['./my-image-collections.component.css']
 })
 export class MyImageCollectionsComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+	constructor(
+		private userService: UserService
+	) { }
 
-  ngOnInit() {
-
-    //imageCollection:Object;
-    const currUser = this.authService.getUsername();
-    const ss = currUser.split(':');
-    const resultUser = ss[2].slice(1, -2);
-    console.log('tying');
-    console.log('user ' + resultUser);
-    this.authService.getCollections(resultUser).subscribe(data => {
-      //this.imageCollection = 
-      console.log('loading' + data.collections.collections);
-    },
-      err => {
-        console.log(err);
-        return false;
-      });
-  }
+	ngOnInit() {
+		const currUser = this.userService.getUsername();
+		const ss = currUser.split(':');
+		const resultUser = ss[2].slice(1, -2);
+		console.log('tying');
+		console.log('user ' + resultUser);
+		this.userService.getCollections(resultUser).subscribe(data => {
+			console.log('loading' + data.collections.collections);
+		},
+			err => {
+				console.log(err);
+				return false;
+			});
+	}
 
 }

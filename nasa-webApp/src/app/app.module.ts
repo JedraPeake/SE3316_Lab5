@@ -12,7 +12,9 @@ import { AuthGuard } from './guards/auth.guard';
 import {
 	AdminService,
 	AuthService,
+	GeneralWebsiteItemsService,
 	ImageService,
+	UserService,
 	ValidateService
 } from './services';
 import {
@@ -71,7 +73,9 @@ const webAppRoutes: Routes = [
 		ValidateService,
 		AuthService,
 		AuthGuard,
-		AdminService
+		AdminService,
+		UserService,
+		GeneralWebsiteItemsService
 	],
 	bootstrap: [AppComponent]
 })

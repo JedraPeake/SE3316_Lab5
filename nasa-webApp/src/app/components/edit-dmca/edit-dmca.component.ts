@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { FlashMessagesService } from 'angular2-flash-messages';
 
@@ -15,7 +14,6 @@ export class EditDmcaComponent implements OnInit {
 	description: String;
 	constructor(
 		private adminService: AdminService,
-		private router: Router,
 		private flashMessage: FlashMessagesService
 	) { }
 
@@ -27,13 +25,11 @@ export class EditDmcaComponent implements OnInit {
 			body: this.description
 		};
 
-		this.adminService.postdmca(pp).subscribe(data => {
+		this.adminService.postDMCA(pp).subscribe(data => {
 			if (data.success) {
 				this.flashMessage.show('DMCA Updated', { cssClass: 'alert-success', timeout: 3000 });
-				// this.router.navigate(['/login']);
 			} else {
 				this.flashMessage.show('Something went wrong please register again', { cssClass: 'alert-danger', timeout: 3000 });
-				// this.router.navigate(['/register']);
 			}
 		});
 	}
