@@ -5,7 +5,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 import {
 	AdminService,
-	AuthService,
 	GeneralWebsiteItemsService
 } from '../../services';
 
@@ -20,7 +19,6 @@ export class EditPrivacyPolicyComponent implements OnInit {
 	constructor(
 		private generalWebsiteItemsService: GeneralWebsiteItemsService,
 		private adminService: AdminService,
-		private authService: AuthService,
 		private router: Router,
 		private flashMessage: FlashMessagesService
 	) { }
