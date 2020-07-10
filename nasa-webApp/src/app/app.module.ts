@@ -38,7 +38,7 @@ const webAppRoutes: Routes = [
   { path: 'createCollection', component: CreateCollectionComponent, canActivate: [AuthGuard] },
   { path: 'dmca', component: DmcaComponent },
   { path: 'privacy', component: PrivacyPolicyComponent }
-]
+];
 
 @NgModule({
   declarations: [

@@ -26,17 +26,17 @@ export class LoginComponent implements OnInit {
     }
 
     if (!this.validateService.validateEmailContent(user)) {
-      this.flashMessage.show("please fill in email field", { cssClass: 'alert-danger', timeout: 3000 });
+      this.flashMessage.show('please fill in email field', { cssClass: 'alert-danger', timeout: 3000 });
       this.router.navigate(['login']);
       return false;
     }
     if (!this.validateService.validatePasswordContent(user)) {
-      this.flashMessage.show("please fill in password field", { cssClass: 'alert-danger', timeout: 3000 });
+      this.flashMessage.show('please fill in password field', { cssClass: 'alert-danger', timeout: 3000 });
       this.router.navigate(['login']);
       return false;
     }
     if (!this.validateService.validateEmail(user.username)) {
-      this.flashMessage.show("please use a valid email", { cssClass: 'alert-danger', timeout: 3000 });
+      this.flashMessage.show('please use a valid email', { cssClass: 'alert-danger', timeout: 3000 });
       this.router.navigate(['login']);
       return false;
     }
@@ -47,14 +47,12 @@ export class LoginComponent implements OnInit {
         this.authService.storeUserData(data.token, data.user);
         this.flashMessage.show('You are now logged in', { cssClass: 'alert-success', timeout: 5000 });
         this.router.navigate(['dashboard']);
-      }
-      else {
-        console.log("error " + data.msg);
+      } else {
+        console.log('error ' + data.msg);
         this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
         this.router.navigate(['login']);
       }
     });
 
   }
-
 }

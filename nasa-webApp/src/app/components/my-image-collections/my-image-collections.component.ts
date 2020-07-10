@@ -14,15 +14,14 @@ export class MyImageCollectionsComponent implements OnInit {
   ngOnInit() {
 
     //imageCollection:Object;
-    var currUser = this.authService.getUsername();
-    var ss = currUser.split(":");
-    var ss = currUser.split(":");
-    var resultUser = ss[2].slice(1, -2);
-    console.log("tying");
-    console.log("user " + resultUser);
+    const currUser = this.authService.getUsername();
+    const ss = currUser.split(':');
+    const resultUser = ss[2].slice(1, -2);
+    console.log('tying');
+    console.log('user ' + resultUser);
     this.authService.getCollections(resultUser).subscribe(data => {
       //this.imageCollection = 
-      console.log("loading" + data.collections.collections);
+      console.log('loading' + data.collections.collections);
     },
       err => {
         console.log(err);

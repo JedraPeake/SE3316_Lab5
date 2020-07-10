@@ -16,15 +16,15 @@ export class EditDmcaComponent implements OnInit {
   ondmcaSubmit() {
     const pp = {
       body: this.description
-    }
+    };
 
     this.authService.postdmca(pp).subscribe(data => {
       if (data.success) {
         this.flashMessage.show('DMCA Updated', { cssClass: 'alert-success', timeout: 3000 });
-        //this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       } else {
         this.flashMessage.show('Something went wrong please register again', { cssClass: 'alert-danger', timeout: 3000 });
-        //this.router.navigate(['/register']);
+        // this.router.navigate(['/register']);
       }
     });
   }
