@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+
+import { GeneralWebsiteItemsService } from './services';
+import {
+	DmcaComponent,
+	PrivacyPolicyComponent
+} from './components';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		BrowserModule
 	],
 	declarations: [
+		DmcaComponent,
+		PrivacyPolicyComponent
 	],
 	exports: [
-		FormsModule,
-		BrowserModule
+		FormsModule
+	],
+	providers: [
+		GeneralWebsiteItemsService
 	]
 })
 export class SharedModule { }

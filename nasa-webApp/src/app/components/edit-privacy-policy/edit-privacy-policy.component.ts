@@ -4,9 +4,12 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import {
-	AdminService,
-	GeneralWebsiteItemsService
+	AdminService
 } from '../../services';
+
+import {
+	GeneralWebsiteItemsService
+} from '../../shared/services';
 
 @Component({
 	selector: 'app-edit-privacy-policy',

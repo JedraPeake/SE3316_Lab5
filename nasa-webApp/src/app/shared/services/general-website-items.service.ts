@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 // I'll rename this when I think of something better
 // just decoupling things so I can set up modules, clean up etc

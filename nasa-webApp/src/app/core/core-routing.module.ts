@@ -3,13 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './guards';
 import {
-	HomeComponent,
-	DashboardComponent,
-	ProfileComponent,
-	CreateCollectionComponent,
 	DmcaComponent,
 	PrivacyPolicyComponent
+} from '../shared/components';
+
+import {
+	HomeComponent,
+	ProfileComponent,
+	CreateCollectionComponent,
 } from '../components';
+
+// import {
+// 	DashboardComponent,
+// } from '../nasa/components';
 
 import {
 	LoginComponent,
@@ -21,7 +27,15 @@ const routes: Routes = [
 
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+
+	{
+		path: 'dashboard',
+		loadChildren: '../nasa/nasa.module#NasaModule',
+		// loadChildren: () => import('../nasa/nasa.module').then(m => m.NasaModule),
+		canActivate: [AuthGuard]
+	},
+
+	// { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
 	{ path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 	{ path: 'createCollection', component: CreateCollectionComponent, canActivate: [AuthGuard] },

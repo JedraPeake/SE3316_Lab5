@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 // this needs to happen on the backend for security,
 // cause it's like impossible to hide keys in the front end

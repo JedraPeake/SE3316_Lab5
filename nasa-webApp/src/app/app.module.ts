@@ -1,4 +1,4 @@
-// import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 // import { FormsModule } from '@angular/forms';
@@ -10,23 +10,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import {
 	AdminService,
-	GeneralWebsiteItemsService,
-	ImageService,
 	UserService,
 	ValidateService
 } from './services';
 
 import {
 	CreateCollectionComponent,
-	DashboardComponent,
-	DmcaComponent,
 	EditDmcaComponent,
 	EditPrivacyPolicyComponent,
 	HomeComponent,
-	ImageListComponent,
-	MyImageCollectionsComponent,
 	NavbarComponent,
-	PrivacyPolicyComponent,
 	ProfileComponent
 } from './components';
 
@@ -47,33 +40,27 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
 	declarations: [
 		AppComponent,
-		ImageListComponent,
 		NavbarComponent,
 		HomeComponent,
-		DashboardComponent,
 		ProfileComponent,
 		CreateCollectionComponent,
-		MyImageCollectionsComponent,
-		PrivacyPolicyComponent,
 		EditPrivacyPolicyComponent,
-		DmcaComponent,
 		EditDmcaComponent
 	],
 	imports: [
-		// BrowserModule,
+		BrowserModule,
 		HttpModule,
 		// FormsModule,
 		CoreModule,
 		// RouterModule.forRoot(webAppRoutes),
-		FlashMessagesModule.forRoot(), NgxPaginationModule,
+		FlashMessagesModule.forRoot(),
+		// NgxPaginationModule,
 		SharedModule
 	],
 	providers: [
-		ImageService,
 		ValidateService,
 		AdminService,
-		UserService,
-		GeneralWebsiteItemsService
+		UserService
 	],
 	bootstrap: [AppComponent]
 })
