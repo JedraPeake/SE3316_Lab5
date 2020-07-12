@@ -4,18 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards';
 import {
 	DmcaComponent,
-	PrivacyPolicyComponent
+	PrivacyPolicyComponent,
+	HomeComponent
 } from '../shared/components';
-
-import {
-	HomeComponent,
-	ProfileComponent,
-	CreateCollectionComponent,
-} from '../components';
-
-// import {
-// 	DashboardComponent,
-// } from '../nasa/components';
 
 import {
 	LoginComponent,
@@ -31,14 +22,16 @@ const routes: Routes = [
 	{
 		path: 'dashboard',
 		loadChildren: '../nasa/nasa.module#NasaModule',
-		// loadChildren: () => import('../nasa/nasa.module').then(m => m.NasaModule),
 		canActivate: [AuthGuard]
 	},
 
-	// { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-
-	{ path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-	{ path: 'createCollection', component: CreateCollectionComponent, canActivate: [AuthGuard] },
+	// might have to split this into 2 modules!
+	{
+		path: 'profile',
+		loadChildren: '../user/user.module#UserModule',
+		canActivate: [AuthGuard]
+	},
+	// { path: 'createCollection', component: CreateCollectionComponent, canActivate: [AuthGuard] },
 
 	{ path: 'dmca', component: DmcaComponent },
 	{ path: 'privacy', component: PrivacyPolicyComponent }

@@ -4,8 +4,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 import {
 	UserService,
-	ValidateService
 } from '../../services';
+
+import {
+	ValidateService
+} from '../../../shared/services';
 
 @Component({
 	selector: 'app-create-collection',

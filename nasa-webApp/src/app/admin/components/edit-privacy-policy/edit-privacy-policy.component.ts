@@ -9,7 +9,7 @@ import {
 
 import {
 	GeneralWebsiteItemsService
-} from '../../shared/services';
+} from '../../../shared/services';
 
 @Component({
 	selector: 'app-edit-privacy-policy',

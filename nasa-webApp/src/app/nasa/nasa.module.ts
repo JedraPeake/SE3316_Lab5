@@ -7,8 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NasaRoutingModule } from './nasa-routing.module';
 import {
 	DashboardComponent,
-	ImageListComponent,
-	MyImageCollectionsComponent
+	ImageListComponent
 } from './components';
 import {
 	ImageService
@@ -24,8 +23,7 @@ import {
 	],
 	declarations: [
 		DashboardComponent,
-		ImageListComponent,
-		MyImageCollectionsComponent
+		ImageListComponent
 	],
 	providers: [
 		ImageService

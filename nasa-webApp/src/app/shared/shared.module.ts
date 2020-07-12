@@ -1,27 +1,35 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { GeneralWebsiteItemsService } from './services';
+import { GeneralWebsiteItemsService, ValidateService } from './services';
 import {
 	DmcaComponent,
-	PrivacyPolicyComponent
+	PrivacyPolicyComponent,
+	HomeComponent,
+	NavbarComponent
 } from './components';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
+		RouterModule
 	],
 	declarations: [
 		DmcaComponent,
-		PrivacyPolicyComponent
+		PrivacyPolicyComponent,
+		HomeComponent,
+		NavbarComponent
 	],
 	exports: [
-		FormsModule
+		FormsModule,
+		NavbarComponent
 	],
 	providers: [
-		GeneralWebsiteItemsService
+		GeneralWebsiteItemsService,
+		ValidateService
 	]
 })
 export class SharedModule { }

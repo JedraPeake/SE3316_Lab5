@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -18,19 +18,19 @@ export class UserService {
 		this.loadToken();
 		headers.append('Authorization', this.authToken);
 		headers.append('Content-Type', 'application/json');
-		return this.http.get('http://localhost:8080/users/profile', { headers: headers })
+		return this.http.get(`${this.baseURL}/users/profile`, { headers: headers })
 			.map(res => res.json());
 	}
 
 	createImageCollection(imageCollection) {
 		const headers = new Headers();
 		headers.append('Content-Type', 'application/json');
-		return this.http.post('http://localhost:8080/imageCollections/createCollection', imageCollection, { headers: headers })
+		return this.http.post(`${this.baseURL}/imageCollections/createCollection`, imageCollection, { headers: headers })
 			.map(res => res.json());
 	}
 
 	getCollections(currUser) {
-		return this.http.get('http://localhost:8080/imageCollections/getUserCollections', { params: { "username": currUser } })
+		return this.http.get(`${this.baseURL}/imageCollections/getUserCollections`, { params: { "username": currUser } })
 			.map(res => res.json());
 	}
 
@@ -44,5 +44,4 @@ export class UserService {
 		const token = localStorage.getItem('id_token');
 		this.authToken = token;
 	}
-
 }
